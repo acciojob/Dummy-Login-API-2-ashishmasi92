@@ -30,26 +30,30 @@ const App = () => {
 
     function handleSubmit(e) {
         e.preventDefault()
-
+        setPasswordError("")
+        setUserError("")
         setLoading(true)
 
-        setTimeout(() => {
 
-            if (email.trim() == "" || password.trim() == "") {
+        setTimeout(() => {
+            let trimedEmail = email.trim();
+            let trimedPassword = password.trim();
+
+            if (trimedEmail == "" || trimedPassword == "") {
                 setUserError("User not found")
                 setLoading(false)
                 return
             }
 
-            if (email.trim() !== predefiined.email) {
+            if (trimedEmail !== predefiined.email) {
                 setUserError("User not found")
                 setLoading(false)
-
+                return
             }
-            else if (password.trim() !== predefiined.password) {
+            else if (trimedPassword !== predefiined.password) {
                 setPasswordError("Password Incorrect")
                 setLoading(false)
-
+                return
             }
             else {
                 alert("form submitted successfully")
