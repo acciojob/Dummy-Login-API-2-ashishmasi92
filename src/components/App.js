@@ -37,15 +37,19 @@ const App = () => {
 
             if (email.trim() == "" || password.trim() == "") {
                 setUserError("User not found")
+                setLoading(false)
                 return
             }
 
             if (email.trim() !== predefiined.email) {
                 setUserError("User not found")
+                setLoading(false)
 
             }
             else if (password.trim() !== predefiined.password) {
                 setPasswordError("Password Incorrect")
+                setLoading(false)
+
             }
             else {
                 alert("form submitted successfully")
@@ -78,7 +82,7 @@ const App = () => {
                     <input type="password" name="password" onChange={handleChange} id="input-password" value={password} />
                 </label>
                 {passwordError && <p id="password-error" style={{ color: "red" }} >{passwordError}</p>}
-                <button type="submit" id="submit-form-btn" disabled={loading} >{loading == true ? "loading in.." : "Log In"}</button>
+                <button type="submit" id="submit-form-btn"  >{loading == true ? "loading in.." : "Log In"}</button>
             </form>
 
         </>
